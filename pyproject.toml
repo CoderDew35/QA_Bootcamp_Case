@@ -1,9 +1,29 @@
 [project]
 name = "qabootcampscase"
 version = "0.1.0"
-description = "Add your description here"
+description = "Production-grade Playwright + Pytest automation for useinsider.com"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "playwright>=1.59.0",
+    "playwright>=1.44.0",
+    "python-dotenv>=1.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-playwright>=0.5.0",
+    "pytest-html>=4.1.0",
+    "pytest-rerunfailures>=14.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Run headed (visible browser) by default — set HEADLESS=true in CI to override.
+# pytest-playwright respects --headless / --headed flags directly.
+addopts = "--tb=short --headed"
+markers = [
+    "smoke: Fast, critical path tests",
+    "regression: Full regression suite",
+    "e2e: End-to-end cross-page flows",
 ]

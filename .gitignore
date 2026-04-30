@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Test artifacts
+reports/
+*.zip
+trace.zip
+test-results/
+
+# Environment secrets
+.env
+
+# Pytest cache
+.pytest_cache/
